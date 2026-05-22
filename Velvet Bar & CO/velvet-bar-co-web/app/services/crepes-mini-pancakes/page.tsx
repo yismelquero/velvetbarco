@@ -3,7 +3,7 @@ import ServicePageLayout from '@/components/ServicePageLayout'
 export default function CrepesPage() {
   return (
     <ServicePageLayout
-      name="Crepes and Mini Pancakes Station"
+      name={"Crepes & Mini Pancakes Station"}
       tagline="Sweet, savory, and made to order — a warm brunch experience for every celebration."
       desc="Freshly made mini pancakes served warm with your choice of toppings, drizzles, fruits, and premium add-ons."
       heroBg="url('https://images.unsplash.com/photo-1519676867240-f03562e64548?w=1600&q=80')"
