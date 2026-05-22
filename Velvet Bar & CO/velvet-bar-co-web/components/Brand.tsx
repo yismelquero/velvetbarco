@@ -21,23 +21,12 @@ export function SocialIcon({ path, size = 17 }: { path: string; size?: number })
   )
 }
 
-export function OvalLogo({ compact = false, dark = false }: { compact?: boolean; dark?: boolean }) {
+export function OvalLogo({ compact = false, dark: _dark = false }: { compact?: boolean; dark?: boolean }) {
   return (
-    <div
-      className={`relative flex items-center justify-center rounded-[999px] border border-[#C9A84C] shadow-[0_18px_45px_rgba(26,26,26,0.08)] ${
-        compact ? 'h-12 w-[112px]' : 'h-20 w-[190px]'
-      } ${dark ? 'bg-[#1A1A1A]/88' : 'bg-[#F5F5F0]/92'}`}
-    >
-      <div className={`absolute inset-1 rounded-[999px] border ${dark ? 'border-white/70' : 'border-[#1A1A1A]/70'}`} />
-      <div className="absolute inset-2 rounded-[999px] border border-[#C9A84C]/70" />
-      <div className="relative text-center leading-none">
-        <p className={`font-playfair font-semibold tracking-wide ${dark ? 'text-white' : 'text-[#1A1A1A]'} ${compact ? 'text-[10px]' : 'text-lg'}`}>
-          VELVET BAR & CO
-        </p>
-        <p className={`font-optima tracking-[0.28em] uppercase text-[#C9A84C] ${compact ? 'mt-1 text-[6px]' : 'mt-2 text-[9px]'}`}>
-          Catering & Food Stations
-        </p>
-      </div>
-    </div>
+    <img
+      src="/images/velvet-logo.svg"
+      alt="Velvet Bar & Co"
+      className={compact ? 'h-12 w-auto' : 'h-16 w-auto'}
+    />
   )
 }

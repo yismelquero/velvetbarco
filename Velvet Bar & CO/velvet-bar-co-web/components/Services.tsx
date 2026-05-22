@@ -8,7 +8,7 @@ const services = [
   {
     slug: 'crepes-mini-pancakes',
     name: 'Crepes & Mini Pancakes',
-    desc: 'Sweet, savory, and made-to-order with premium ingredients.',
+    desc: 'Freshly made mini pancakes served warm with your choice of toppings, drizzles, fruits, and premium add-ons.',
     bg: "url('https://images.unsplash.com/photo-1519676867240-f03562e64548?w=900&q=80')",
   },
   {
@@ -20,13 +20,13 @@ const services = [
   {
     slug: 'coffee-bar',
     name: 'Coffee Bar Experience',
-    desc: 'Crafted espresso drinks and warm hospitality.',
+    desc: 'A specialty coffee experience featuring handcrafted hot and iced espresso drinks made fresh for your guests.',
     bg: "url('/images/velvet-cart.jpg')",
   },
   {
     slug: 'acai-bar',
     name: 'Acai Bar Experience',
-    desc: 'Fresh, nourishing bowls made with real ingredients.',
+    desc: 'Fresh and refreshing açaí bowls made to order with your choice of toppings, drizzles, and fresh fruit.',
     bg: "url('https://images.unsplash.com/photo-1590301157890-4810ed352733?w=900&q=80')",
   },
 ]
