@@ -23,39 +23,10 @@ export function SocialIcon({ path, size = 17 }: { path: string; size?: number })
 
 export function OvalLogo({ compact = false, dark: _dark = false }: { compact?: boolean; dark?: boolean }) {
   return (
-    <svg
-      viewBox="0 0 300 196"
+    <img
+      src="/images/velvet-logo.svg"
+      alt="Velvet Bar & Co"
       className={compact ? 'h-12 w-auto' : 'h-20 w-auto'}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Velvet Bar &amp; Co"
-    >
-      <ellipse cx="150" cy="98" rx="141" ry="88" fill="#FDFCF8" />
-      <ellipse cx="150" cy="98" rx="145" ry="92" stroke="#C9A84C" strokeWidth="0.8" />
-      <ellipse cx="150" cy="98" rx="141" ry="88" stroke="#C9A84C" strokeWidth="2.5" />
-      <ellipse cx="150" cy="98" rx="131" ry="78" stroke="#C9A84C" strokeWidth="0.8" />
-      <circle cx="150" cy="10" r="3" fill="#C9A84C" />
-      <circle cx="150" cy="186" r="3" fill="#C9A84C" />
-      <circle cx="9"   cy="98" r="3" fill="#C9A84C" />
-      <circle cx="291" cy="98" r="3" fill="#C9A84C" />
-      <path
-        d="M140 54 Q150 43 160 54 M140 54 Q136 47 140 42 M160 54 Q164 47 160 42 M150 43 V37"
-        stroke="#C9A84C" strokeWidth="1" strokeLinecap="round"
-      />
-      <text x="150" y="88" textAnchor="middle"
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="20" fontWeight="bold"
-        fill="#C9A84C" letterSpacing="2">
-        {'VELVET BAR & CO.'}
-      </text>
-      <line x1="46"  y1="97" x2="118" y2="97" stroke="#C9A84C" strokeWidth="0.7" />
-      <circle cx="150" cy="97" r="2" fill="#C9A84C" />
-      <line x1="182" y1="97" x2="254" y2="97" stroke="#C9A84C" strokeWidth="0.7" />
-      <text x="150" y="112" textAnchor="middle"
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="9" fill="#C9A84C" letterSpacing="2.2">
-        {'CATERING & FOOD STATIONS'}
-      </text>
-    </svg>
+    />
   )
 }
