@@ -31,8 +31,8 @@ export default function Quote() {
               </p>
               <div className="space-y-5 font-optima text-sm text-white/75">
                 <p>Lake Charles, Louisiana · Available for travel</p>
-                <p>hello@velvetbarco.com</p>
-                <p>(337) 123-4567</p>
+                <p>info@velvetbarco.com</p>
+                <p>+1 (337) 965-4192</p>
               </div>
             </div>
             <p className="mt-10 border-t border-[#C9A84C]/20 pt-8 font-playfair text-sm italic text-white/45">

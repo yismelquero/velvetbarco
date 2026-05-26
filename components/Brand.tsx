@@ -8,8 +8,8 @@ const socialPaths = {
 }
 
 export const socialLinks = [
-  { label: 'Facebook', href: '#', path: socialPaths.Facebook, size: 17 },
-  { label: 'Instagram', href: '#', path: socialPaths.Instagram, size: 17 },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/1FJVY9D3pT/?mibextid=wwXIfr', path: socialPaths.Facebook, size: 17 },
+  { label: 'Instagram', href: 'https://www.instagram.com/velvetbarco?igsh=c3EydHgxcnY1bXNq&utm_source=qr', path: socialPaths.Instagram, size: 17 },
   { label: 'TikTok', href: '#', path: socialPaths.TikTok, size: 16 },
 ]
 
