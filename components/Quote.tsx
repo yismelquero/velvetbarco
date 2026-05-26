@@ -6,6 +6,13 @@ import { motion, useInView } from 'framer-motion'
 const inputClass =
   'w-full rounded-sm border border-[#D5D0C8] bg-white/80 px-4 py-3 font-optima text-xs text-[#1A1A1A] placeholder:text-[#1A1A1A]/45 transition-colors duration-200 focus:border-[#C9A84C] focus:outline-none'
 
+const SERVICES = [
+  'Crepes & Mini Pancakes',
+  'Charcuterie',
+  'Coffee Bar',
+  'Acai Bar',
+]
+
 type FormState = {
   fullName: string
   email: string
@@ -13,7 +20,7 @@ type FormState = {
   eventType: string
   eventDate: string
   guestCount: string
-  service: string
+  services: string[]
   message: string
 }
 
@@ -24,7 +31,7 @@ const initialForm: FormState = {
   eventType: '',
   eventDate: '',
   guestCount: '',
-  service: '',
+  services: [],
   message: '',
 }
 
@@ -43,8 +50,24 @@ export default function Quote() {
     setError(null)
   }
 
+  const handleServiceToggle = (service: string) => {
+    setForm((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }))
+    setError(null)
+  }
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (form.services.length === 0) {
+      setError('Please select at least one service.')
+      return
+    }
+
     setLoading(true)
     setError(null)
 
@@ -180,18 +203,42 @@ export default function Quote() {
                     <option>200+</option>
                   </select>
                 </div>
-                <select
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  className={inputClass}
-                >
-                  <option value="">Desired Service</option>
-                  <option>Crepes &amp; Mini Pancakes</option>
-                  <option>Charcuterie</option>
-                  <option>Coffee Bar</option>
-                  <option>Acai Bar</option>
-                </select>
+
+                {/* Multi-select de servicios */}
+                <div className="rounded-sm border border-[#D5D0C8] bg-white/80 px-4 py-3">
+                  <p className="mb-3 font-optima text-xs text-[#1A1A1A]/45">
+                    Desired Service(s) — select all that apply
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {SERVICES.map((service) => {
+                      const checked = form.services.includes(service)
+                      return (
+                        <button
+                          key={service}
+                          type="button"
+                          onClick={() => handleServiceToggle(service)}
+                          className={`flex items-center gap-2 rounded-sm border px-3 py-2 font-optima text-xs transition-all duration-150 ${
+                            checked
+                              ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#1A1A1A]'
+                              : 'border-[#D5D0C8] bg-white text-[#1A1A1A]/55 hover:border-[#C9A84C]/60'
+                          }`}
+                        >
+                          <span className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-sm border transition-all ${
+                            checked ? 'border-[#C9A84C] bg-[#C9A84C]' : 'border-[#D5D0C8]'
+                          }`}>
+                            {checked && (
+                              <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                <path d="M1 3.5L3.5 6L8 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            )}
+                          </span>
+                          {service}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+
                 <textarea
                   name="message"
                   rows={4}

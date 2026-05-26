@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { fullName, email, phone, eventType, eventDate, guestCount, service, message } = body
+    const { fullName, email, phone, eventType, eventDate, guestCount, services, message } = body
 
     // Validación básica
     if (!fullName || !email || !eventDate) {
@@ -54,8 +54,12 @@ export async function POST(request: Request) {
               <td style="padding: 10px 14px; border-bottom: 1px solid #eee;">${guestCount || '—'}</td>
             </tr>
             <tr style="background: #fff;">
-              <td style="padding: 10px 14px; font-weight: bold; color: #1B4332; border-bottom: 1px solid #eee;">Servicio Deseado</td>
-              <td style="padding: 10px 14px; border-bottom: 1px solid #eee;">${service || '—'}</td>
+              <td style="padding: 10px 14px; font-weight: bold; color: #1B4332; border-bottom: 1px solid #eee; vertical-align: top;">Servicio(s) Deseado(s)</td>
+              <td style="padding: 10px 14px; border-bottom: 1px solid #eee;">
+                ${Array.isArray(services) && services.length > 0
+                  ? services.map((s: string) => `<span style="display:inline-block; background:#C9A84C20; border:1px solid #C9A84C; color:#1B4332; border-radius:3px; padding:2px 8px; margin:2px 4px 2px 0; font-size:13px;">${s}</span>`).join('')
+                  : '—'}
+              </td>
             </tr>
             ${message ? `
             <tr style="background: #fafaf7;">
