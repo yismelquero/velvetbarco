@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Velvet Bar & Co <noreply@velvetbarco.com>',
-      to: ['yismelquero@gmail.com'],
+      to: ['info@velvetbarco.com'],
       replyTo: email,
       subject: `Nueva solicitud de cotización — ${fullName}`,
       html: `
