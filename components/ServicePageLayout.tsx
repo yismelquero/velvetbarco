@@ -49,8 +49,8 @@ export default function ServicePageLayout({ name, tagline, desc, heroBg, menuTit
             </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {galleryImages.map((bg, i) => (
-                <div key={bg} className={`img-zoom-container overflow-hidden rounded-sm ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
-                  <div className="editorial-image min-h-[200px] w-full" style={{ backgroundImage: bg, minHeight: i === 0 ? '420px' : '200px' }} />
+                <div key={bg} className={`img-zoom-container overflow-hidden rounded-sm ${i === 0 ? 'col-span-2 aspect-square' : 'aspect-[4/3]'}`}>
+                  <div className="editorial-image h-full w-full" style={{ backgroundImage: bg }} />
                 </div>
               ))}
             </div>
