@@ -26,7 +26,7 @@ export default function ServicePageLayout({ name, tagline, desc, heroBg, menuTit
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 lg:px-10">
             <div className="mb-5 flex items-center gap-3">
               <div className="h-px w-10 bg-[#C9A84C]" />
-              <span className="font-optima text-[10px] uppercase tracking-[5px] text-[#C9A84C]">Velvet Bar & Co</span>
+              <span className="font-optima text-[10px] uppercase tracking-[5px] text-[#C9A84C]">Velvet Bar Co</span>
             </div>
             <h1 className="mb-4 font-playfair text-5xl font-normal leading-tight text-white lg:text-7xl">{name}</h1>
             <p className="max-w-lg font-optima text-lg text-white/75">{tagline}</p>

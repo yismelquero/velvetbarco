@@ -25,7 +25,7 @@ export function OvalLogo({ compact = false, dark: _dark = false }: { compact?: b
   return (
     <img
       src="/images/velvet-logo.png"
-      alt="Velvet Bar & Co"
+      alt="Velvet Bar Co"
       className={compact ? 'h-12 w-auto' : 'h-20 w-auto'}
     />
   )

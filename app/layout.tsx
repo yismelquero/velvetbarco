@@ -9,7 +9,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Velvet Bar & Co. | Catering & Food Stations',
+  title: 'Velvet Bar Co. | Catering & Food Stations',
   description:
     'Luxury catering stations designed to elevate weddings, celebrations, and unforgettable gatherings in Lake Charles.',
   icons: {

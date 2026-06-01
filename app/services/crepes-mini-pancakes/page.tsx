@@ -9,7 +9,7 @@ export default function CrepesPage() {
       heroBg="url('/images/crepes-portada.jpg')"
       menuTitle="Crepe & Pancake Menu"
       menuItems={[
-        { name: 'Choose Your Cart Experience', items: ['🥞 Mini Pancakes', '🫓 Crepes'] },
+        { name: 'Choose Your Cart Experience', items: ['Mini Pancakes', 'Crepes'] },
         { name: 'Choose Your Drizzles', items: ['Nutella', 'Biscoff Butter', 'Dulce de Leche', 'Kinder Bueno Spread', 'Pistachio Cream', 'Peanut Butter', 'Condensed Milk'] },
         { name: 'Choose Your Toppings', items: ['Oreo Crumbs', 'Biscoff Cookies', 'Mini Marshmallows', 'Chocolate Chips', 'Rainbow Sprinkles', 'Peanuts Praline Crunch', 'Crushed Pistachios', 'Coconut Flakes'] },
         { name: 'Fresh Fruit Options', items: ['Strawberries', 'Bananas'] },

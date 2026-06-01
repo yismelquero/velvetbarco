@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Velvet Bar & Co <noreply@velvetbarco.com>',
+      from: 'Velvet Bar Co <noreply@velvetbarco.com>',
       to: ['info@velvetbarco.com'],
       replyTo: email,
       subject: `Nueva solicitud de cotización — ${fullName}`,
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #f9f8f3; padding: 32px; border-radius: 8px;">
           <div style="border-bottom: 2px solid #C9A84C; padding-bottom: 16px; margin-bottom: 24px;">
             <h1 style="color: #1B4332; font-size: 24px; margin: 0;">Nueva Solicitud de Cotización</h1>
-            <p style="color: #888; font-size: 13px; margin: 4px 0 0;">Velvet Bar & Co — Formulario de Contacto</p>
+            <p style="color: #888; font-size: 13px; margin: 4px 0 0;">Velvet Bar Co — Formulario de Contacto</p>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">

@@ -48,7 +48,7 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" aria-label="Velvet Bar & Co home">
+          <Link href="/" aria-label="Velvet Bar Co home">
             <OvalLogo compact dark={!scrolled} />
           </Link>
 

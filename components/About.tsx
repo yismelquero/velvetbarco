@@ -35,7 +35,7 @@ export default function About() {
               Warm Hospitality Meets Creative Execution
             </h2>
             <div className="mb-8 space-y-4 font-optima text-[15px] leading-relaxed text-[#1A1A1A]/75">
-              <p>At Velvet Bar & Co., we believe catering should feel intentional, elegant, and unforgettable.</p>
+              <p>At Velvet Bar Co., we believe catering should feel intentional, elegant, and unforgettable.</p>
               <p>We create elevated food and beverage station experiences designed to bring warmth, beauty, and connection to every event.</p>
               <p>From intimate celebrations to large-scale gatherings, our team blends creativity, hospitality, and refined presentation to deliver experiences your guests will remember long after the event ends.</p>
             </div>

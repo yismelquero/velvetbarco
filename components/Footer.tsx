@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center font-optima text-[11px] text-white/45">
-        © 2026 Velvet Bar & Co. All Rights Reserved.
+        © 2026 Velvet Bar Co. All Rights Reserved.
       </div>
     </footer>
   )
