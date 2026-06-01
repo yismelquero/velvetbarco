@@ -24,7 +24,7 @@ export function SocialIcon({ path, size = 17 }: { path: string; size?: number })
 export function OvalLogo({ compact = false, dark: _dark = false }: { compact?: boolean; dark?: boolean }) {
   return (
     <img
-      src="/images/velvet-logo.svg"
+      src="/images/velvet-logo.png"
       alt="Velvet Bar & Co"
       className={compact ? 'h-12 w-auto' : 'h-20 w-auto'}
     />
