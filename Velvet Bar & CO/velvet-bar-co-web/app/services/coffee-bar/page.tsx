@@ -6,7 +6,7 @@ export default function CoffeeBarPage() {
       name="Coffee Bar Experience"
       tagline="Crafted espresso drinks and warm hospitality — your signature bar, anywhere."
       desc="A specialty coffee experience featuring handcrafted hot and iced espresso drinks made fresh for your guests."
-      heroBg="url('/images/velvet-cart.jpg')"
+      heroBg="url('/images/coffee-portada.jpg')"
       menuTitle="Espresso & Beverage Menu"
       menuItems={[
         { name: '16 oz Iced Latte Options', items: ['Dulce de Leche Latte', 'Biscoff Latte', 'Spanish Latte', 'Matcha Latte', 'Strawberry Matcha Latte'] },
@@ -14,7 +14,7 @@ export default function CoffeeBarPage() {
         { name: 'Signature "Bite & Sip" Edible Cookie Cup', items: ['An edible cookie cup filled with your choice of specialty latte.'] },
         { name: 'Choose Your Flavor', items: ['Nutella', 'Dulce de Leche'] },
       ]}
-      galleryImages={["url('/images/velvet-cart.jpg')", "url('/images/velvet-badge-gold.jpg')", "url('/images/velvet-team.jpg')", "url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80')", "url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80')"]}
+      galleryImages={["url('/images/coffee-portada.jpg')", "url('/images/coffee-1.jpg')", "url('/images/coffee-2.jpg')", "url('/images/coffee-3.jpg')", "url('/images/coffee-4.jpg')", "url('/images/coffee-5.jpg')", "url('/images/coffee-6.jpg')"]}
     />
   )
 }

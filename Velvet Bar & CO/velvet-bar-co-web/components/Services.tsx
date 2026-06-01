@@ -9,25 +9,25 @@ const services = [
     slug: 'crepes-mini-pancakes',
     name: 'Crepes & Mini Pancakes',
     desc: 'Freshly made mini pancakes served warm with your choice of toppings, drizzles, fruits, and premium add-ons.',
-    bg: "url('https://images.unsplash.com/photo-1519676867240-f03562e64548?w=900&q=80')",
+    bg: "url('/images/crepes-portada.jpg')",
   },
   {
     slug: 'charcuterie',
     name: 'Charcuterie Stations',
     desc: 'Artfully curated boards that bring people together.',
-    bg: "url('https://images.unsplash.com/photo-1546039907-7fa05f864c02?w=900&q=80')",
+    bg: "url('/images/charcuterie-portada.jpg')",
   },
   {
     slug: 'coffee-bar',
     name: 'Coffee Bar Experience',
     desc: 'A specialty coffee experience featuring handcrafted hot and iced espresso drinks made fresh for your guests.',
-    bg: "url('/images/velvet-cart.jpg')",
+    bg: "url('/images/coffee-portada.jpg')",
   },
   {
     slug: 'acai-bar',
     name: 'Acai Bar Experience',
     desc: 'Fresh and refreshing açaí bowls made to order with your choice of toppings, drizzles, and fresh fruit.',
-    bg: "url('https://images.unsplash.com/photo-1590301157890-4810ed352733?w=900&q=80')",
+    bg: "url('/images/acai-portada.jpg')",
   },
 ]
 

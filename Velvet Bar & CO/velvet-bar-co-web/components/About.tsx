@@ -20,7 +20,7 @@ export default function About() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12">
           <motion.div ref={ref} initial={{ opacity: 0, x: -30 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.9 }} className="relative">
             <div className="img-zoom-container relative aspect-[0.82] overflow-hidden rounded-sm">
-              <div className="editorial-image absolute inset-0" style={{ backgroundImage: "url('/images/velvet-team.jpg')" }} />
+              <div className="editorial-image absolute inset-0" style={{ backgroundImage: "url('/images/about-portada.jpg')" }} />
               <div className="absolute inset-0 bg-[#1B4332]/10" />
             </div>
             <div className="absolute -left-3 -top-3 h-10 w-10 border-l border-t border-[#C9A84C]/70" />
