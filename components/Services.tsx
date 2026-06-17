@@ -6,9 +6,15 @@ import { useRef } from 'react'
 
 const services = [
   {
-    slug: 'crepes-mini-pancakes',
-    name: 'Crepes & Mini Pancakes',
-    desc: 'Freshly made mini pancakes served warm with your choice of toppings, drizzles, fruits, and premium add-ons.',
+    slug: 'crepes',
+    name: 'Crepes Station',
+    desc: 'Sweet and savory crepes made to order with premium drizzles, toppings, and fresh fruit.',
+    bg: "url('/images/crepes-portada.jpg')",
+  },
+  {
+    slug: 'mini-pancakes',
+    name: 'Mini Pancakes',
+    desc: 'Fluffy mini pancakes served warm with your choice of toppings, drizzles, and fresh fruit.',
     bg: "url('/images/crepes-portada.jpg')",
   },
   {
@@ -49,7 +55,7 @@ export default function Services() {
 
         <div className="gold-divider my-7" />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {services.map((s, i) => (
             <motion.div key={s.slug} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: i * 0.12 }}>
               <div className="group flex h-full flex-col overflow-hidden rounded border border-[#D8D0C1] bg-[#F8F7F1] text-center shadow-[0_12px_30px_rgba(26,26,26,0.06)] transition-all duration-300 hover:border-[#C9A84C]/60">
