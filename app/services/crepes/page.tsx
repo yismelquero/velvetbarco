@@ -17,9 +17,6 @@ export default function CrepesPage() {
         "url('/images/crepes-portada.jpg')",
         "url('/images/crepes-1.jpg')",
         "url('/images/crepes-2.jpg')",
-        "url('/images/crepes-3.jpg')",
-        "url('/images/crepes-4.jpg')",
-        "url('/images/crepes-5.jpg')",
       ]}
     />
   )

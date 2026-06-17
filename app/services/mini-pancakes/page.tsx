@@ -6,7 +6,7 @@ export default function MiniPancakesPage() {
       name="Mini Pancakes"
       tagline="Fluffy, bite-sized pancakes crafted fresh at your event — a crowd favorite every time."
       desc="Freshly made mini pancakes served warm with your choice of toppings, drizzles, fruits, and premium add-ons."
-      heroBg="url('/images/crepes-portada.jpg')"
+      heroBg="url('/images/mini-pancakes-portada.jpg')"
       menuTitle="Mini Pancakes Menu"
       menuItems={[
         { name: 'Choose Your Drizzles', items: ['Nutella', 'Biscoff Butter', 'Dulce de Leche', 'Kinder Bueno Spread', 'Pistachio Cream', 'Peanut Butter', 'Condensed Milk'] },
@@ -14,12 +14,10 @@ export default function MiniPancakesPage() {
         { name: 'Fresh Fruit Options', items: ['Strawberries', 'Bananas'] },
       ]}
       galleryImages={[
-        "url('/images/crepes-portada.jpg')",
-        "url('/images/crepes-1.jpg')",
-        "url('/images/crepes-2.jpg')",
-        "url('/images/crepes-3.jpg')",
-        "url('/images/crepes-4.jpg')",
-        "url('/images/crepes-5.jpg')",
+        "url('/images/mini-pancakes-portada.jpg')",
+        "url('/images/mini-pancakes-1.jpg')",
+        "url('/images/mini-pancakes-2.jpg')",
+        "url('/images/mini-pancakes-3.jpg')",
       ]}
     />
   )

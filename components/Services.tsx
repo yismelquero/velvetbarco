@@ -15,7 +15,7 @@ const services = [
     slug: 'mini-pancakes',
     name: 'Mini Pancakes',
     desc: 'Fluffy mini pancakes served warm with your choice of toppings, drizzles, and fresh fruit.',
-    bg: "url('/images/crepes-portada.jpg')",
+    bg: "url('/images/mini-pancakes-portada.jpg')",
   },
   {
     slug: 'charcuterie',
