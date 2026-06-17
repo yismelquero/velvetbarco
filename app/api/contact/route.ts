@@ -23,13 +23,27 @@ export async function POST(request: Request) {
     const ingredientRows = Array.isArray(services) && services.length > 0
       ? services.map((service: string) => {
           const selected: string[] = (ingredients?.[service] ?? [])
-          const ingredientList = selected.length > 0
-            ? selected.map((item: string) => `<span style="display:inline-block; background:#f5f0e8; border:1px solid #D8D0C1; color:#555; border-radius:3px; padding:2px 7px; margin:2px 3px 2px 0; font-size:12px;">${item}</span>`).join('')
+
+          // Group items by their category (format: "group||item")
+          const grouped: Record<string, string[]> = {}
+          for (const key of selected) {
+            const [group, item] = key.includes('||') ? key.split('||') : ['General', key]
+            if (!grouped[group]) grouped[group] = []
+            grouped[group].push(item)
+          }
+
+          const groupedHtml = Object.keys(grouped).length > 0
+            ? Object.entries(grouped).map(([group, items]) => `
+                <div style="margin-bottom:6px;">
+                  <span style="font-size:11px; color:#888; text-transform:uppercase; letter-spacing:1px;">${group}:</span><br/>
+                  ${items.map((item: string) => `<span style="display:inline-block; background:#f5f0e8; border:1px solid #D8D0C1; color:#555; border-radius:3px; padding:2px 7px; margin:2px 3px 2px 0; font-size:12px;">${item}</span>`).join('')}
+                </div>`).join('')
             : '<span style="color:#aaa; font-size:12px;">No especificados</span>'
+
           return `
             <tr style="background: #fff;">
               <td style="padding: 10px 14px; font-weight: bold; color: #1B4332; border-bottom: 1px solid #eee; vertical-align: top; width: 40%;">${service}</td>
-              <td style="padding: 10px 14px; border-bottom: 1px solid #eee;">${ingredientList}</td>
+              <td style="padding: 10px 14px; border-bottom: 1px solid #eee;">${groupedHtml}</td>
             </tr>`
         }).join('')
       : ''

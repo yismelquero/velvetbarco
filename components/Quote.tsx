@@ -85,7 +85,7 @@ const initialForm: FormState = {
 function IngredientSubmenu({ serviceDef, selected, onToggle }: {
   serviceDef: ServiceDef
   selected: string[]
-  onToggle: (item: string) => void
+  onToggle: (key: string) => void
 }) {
   return (
     <div className="mt-2 space-y-3 rounded-sm border border-[#C9A84C]/30 bg-[#FDFCF7] px-4 py-4">
@@ -97,12 +97,13 @@ function IngredientSubmenu({ serviceDef, selected, onToggle }: {
           <p className="mb-1.5 font-optima text-[10px] uppercase tracking-[1.5px] text-[#1A1A1A]/50">{group.name}</p>
           <div className="flex flex-wrap gap-1.5">
             {group.items.map((item) => {
-              const checked = selected.includes(item)
+              const key = `${group.name}||${item}`
+              const checked = selected.includes(key)
               return (
                 <button
-                  key={item}
+                  key={key}
                   type="button"
-                  onClick={() => onToggle(item)}
+                  onClick={() => onToggle(key)}
                   className={`rounded-sm border px-2.5 py-1 font-optima text-[10px] transition-all duration-150 ${
                     checked
                       ? 'border-[#C9A84C] bg-[#C9A84C]/15 text-[#1A1A1A]'
