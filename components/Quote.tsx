@@ -6,11 +6,56 @@ import { motion, useInView } from 'framer-motion'
 const inputClass =
   'w-full rounded-sm border border-[#D5D0C8] bg-white/80 px-4 py-3 font-optima text-xs text-[#1A1A1A] placeholder:text-[#1A1A1A]/45 transition-colors duration-200 focus:border-[#C9A84C] focus:outline-none'
 
-const SERVICES = [
-  'Crepes & Mini Pancakes',
-  'Charcuterie',
-  'Coffee Bar',
-  'Acai Bar',
+type MenuItem = { name: string; items: string[] }
+
+type ServiceDef = {
+  label: string
+  menu: MenuItem[]
+}
+
+const SERVICE_DEFS: ServiceDef[] = [
+  {
+    label: 'Crepes Station',
+    menu: [
+      { name: 'Drizzles', items: ['Nutella', 'Biscoff Butter', 'Dulce de Leche', 'Kinder Bueno Spread', 'Pistachio Cream', 'Peanut Butter', 'Condensed Milk'] },
+      { name: 'Toppings', items: ['Oreo Crumbs', 'Biscoff Cookies', 'Mini Marshmallows', 'Chocolate Chips', 'Rainbow Sprinkles', 'Peanuts Praline Crunch', 'Crushed Pistachios', 'Coconut Flakes'] },
+      { name: 'Fresh Fruit', items: ['Strawberries', 'Bananas'] },
+    ],
+  },
+  {
+    label: 'Mini Pancakes',
+    menu: [
+      { name: 'Drizzles', items: ['Nutella', 'Biscoff Butter', 'Dulce de Leche', 'Kinder Bueno Spread', 'Pistachio Cream', 'Peanut Butter', 'Condensed Milk'] },
+      { name: 'Toppings', items: ['Oreo Crumbs', 'Biscoff Cookies', 'Mini Marshmallows', 'Chocolate Chips', 'Rainbow Sprinkles', 'Peanuts Praline Crunch', 'Crushed Pistachios', 'Coconut Flakes'] },
+      { name: 'Fresh Fruit', items: ['Strawberries', 'Bananas'] },
+    ],
+  },
+  {
+    label: 'Charcuterie',
+    menu: [
+      { name: 'Cheese Selection', items: ['Brie', 'Gouda', 'Aged White Cheddar', 'Havarti', 'Parmesan Cubes'] },
+      { name: 'Cured Meats', items: ['Salami', 'Prosciutto', 'Pepperoni'] },
+      { name: 'Fresh Fruit', items: ['Strawberries', 'Grapes', 'Blueberries', 'Blackberries'] },
+      { name: 'Accompaniments', items: ['Crackers', 'Breadsticks', 'Mixed Nuts', 'Honey', 'Fig Jam', 'Olives', 'Pickles', 'Chocolate Pieces'] },
+      { name: 'Premium Add-Ons', items: ['Burrata', 'Smoked Salmon', 'Chocolate Covered Strawberries'] },
+    ],
+  },
+  {
+    label: 'Coffee Bar',
+    menu: [
+      { name: '16 oz Iced Latte Options', items: ['Dulce de Leche Latte', 'Biscoff Latte', 'Spanish Latte', 'Matcha Latte', 'Strawberry Matcha Latte'] },
+      { name: 'Hot Latte Options', items: ['Dulce de Leche Latte', 'Biscoff Latte', 'Cappuccino'] },
+      { name: 'Edible Cookie Cup Flavor', items: ['Nutella', 'Dulce de Leche'] },
+    ],
+  },
+  {
+    label: 'Acai Bar',
+    menu: [
+      { name: 'Drizzles', items: ['Nutella', 'Condensed Milk', 'Dulce de Leche', 'Peanut Butter', 'Honey'] },
+      { name: 'Toppings', items: ['Granola', 'Chocolate Chips', 'Shredded Coconut'] },
+      { name: 'Fresh Fruit', items: ['Strawberries', 'Banana', 'Blueberries', 'Mango'] },
+    ],
+  },
 ]
 
 type FormState = {
@@ -21,6 +66,7 @@ type FormState = {
   eventDate: string
   guestCount: string
   services: string[]
+  ingredients: Record<string, string[]>
   message: string
 }
 
@@ -32,7 +78,46 @@ const initialForm: FormState = {
   eventDate: '',
   guestCount: '',
   services: [],
+  ingredients: {},
   message: '',
+}
+
+function IngredientSubmenu({ serviceDef, selected, onToggle }: {
+  serviceDef: ServiceDef
+  selected: string[]
+  onToggle: (item: string) => void
+}) {
+  return (
+    <div className="mt-2 space-y-3 rounded-sm border border-[#C9A84C]/30 bg-[#FDFCF7] px-4 py-4">
+      <p className="font-optima text-[10px] uppercase tracking-[2px] text-[#C9A84C]">
+        Customize your {serviceDef.label}
+      </p>
+      {serviceDef.menu.map((group) => (
+        <div key={group.name}>
+          <p className="mb-1.5 font-optima text-[10px] uppercase tracking-[1.5px] text-[#1A1A1A]/50">{group.name}</p>
+          <div className="flex flex-wrap gap-1.5">
+            {group.items.map((item) => {
+              const checked = selected.includes(item)
+              return (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => onToggle(item)}
+                  className={`rounded-sm border px-2.5 py-1 font-optima text-[10px] transition-all duration-150 ${
+                    checked
+                      ? 'border-[#C9A84C] bg-[#C9A84C]/15 text-[#1A1A1A]'
+                      : 'border-[#D5D0C8] bg-white text-[#1A1A1A]/55 hover:border-[#C9A84C]/60'
+                  }`}
+                >
+                  {item}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function Quote() {
@@ -42,6 +127,7 @@ export default function Quote() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [form, setForm] = useState<FormState>(initialForm)
+  const [guestError, setGuestError] = useState<string | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -50,14 +136,38 @@ export default function Quote() {
     setError(null)
   }
 
-  const handleServiceToggle = (service: string) => {
-    setForm((prev) => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service],
-    }))
+  const handleGuestCount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value
+    setForm((prev) => ({ ...prev, guestCount: val }))
+    if (val && Number(val) < 40) {
+      setGuestError('Minimum guest count is 40.')
+    } else {
+      setGuestError(null)
+    }
     setError(null)
+  }
+
+  const handleServiceToggle = (label: string) => {
+    setForm((prev) => {
+      const active = prev.services.includes(label)
+      const services = active
+        ? prev.services.filter((s) => s !== label)
+        : [...prev.services, label]
+      const ingredients = { ...prev.ingredients }
+      if (active) delete ingredients[label]
+      return { ...prev, services, ingredients }
+    })
+    setError(null)
+  }
+
+  const handleIngredientToggle = (serviceLabel: string, item: string) => {
+    setForm((prev) => {
+      const current = prev.ingredients[serviceLabel] ?? []
+      const updated = current.includes(item)
+        ? current.filter((i) => i !== item)
+        : [...current, item]
+      return { ...prev, ingredients: { ...prev.ingredients, [serviceLabel]: updated } }
+    })
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -65,6 +175,11 @@ export default function Quote() {
 
     if (form.services.length === 0) {
       setError('Please select at least one service.')
+      return
+    }
+
+    if (!form.guestCount || Number(form.guestCount) < 40) {
+      setError('Minimum guest count is 40.')
       return
     }
 
@@ -190,50 +305,61 @@ export default function Quote() {
                     onChange={handleChange}
                     className={inputClass}
                   />
-                  <select
-                    name="guestCount"
-                    value={form.guestCount}
-                    onChange={handleChange}
-                    className={inputClass}
-                  >
-                    <option value="">Guest Count</option>
-                    <option>Under 50</option>
-                    <option>50 - 100</option>
-                    <option>100 - 200</option>
-                    <option>200+</option>
-                  </select>
+                  <div>
+                    <input
+                      type="number"
+                      name="guestCount"
+                      min={40}
+                      required
+                      placeholder="Guest Count (min. 40)"
+                      value={form.guestCount}
+                      onChange={handleGuestCount}
+                      className={inputClass}
+                    />
+                    {guestError && (
+                      <p className="mt-1 font-optima text-[10px] text-red-500">{guestError}</p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Multi-select de servicios */}
+                {/* Service selection with ingredient submenus */}
                 <div className="rounded-sm border border-[#D5D0C8] bg-white/80 px-4 py-3">
                   <p className="mb-3 font-optima text-xs text-[#1A1A1A]/45">
                     Desired Service(s) — select all that apply
                   </p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {SERVICES.map((service) => {
-                      const checked = form.services.includes(service)
+                  <div className="space-y-2">
+                    {SERVICE_DEFS.map((def) => {
+                      const checked = form.services.includes(def.label)
                       return (
-                        <button
-                          key={service}
-                          type="button"
-                          onClick={() => handleServiceToggle(service)}
-                          className={`flex items-center gap-2 rounded-sm border px-3 py-2 font-optima text-xs transition-all duration-150 ${
-                            checked
-                              ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#1A1A1A]'
-                              : 'border-[#D5D0C8] bg-white text-[#1A1A1A]/55 hover:border-[#C9A84C]/60'
-                          }`}
-                        >
-                          <span className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-sm border transition-all ${
-                            checked ? 'border-[#C9A84C] bg-[#C9A84C]' : 'border-[#D5D0C8]'
-                          }`}>
-                            {checked && (
-                              <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                                <path d="M1 3.5L3.5 6L8 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            )}
-                          </span>
-                          {service}
-                        </button>
+                        <div key={def.label}>
+                          <button
+                            type="button"
+                            onClick={() => handleServiceToggle(def.label)}
+                            className={`flex w-full items-center gap-2 rounded-sm border px-3 py-2.5 font-optima text-xs transition-all duration-150 ${
+                              checked
+                                ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#1A1A1A]'
+                                : 'border-[#D5D0C8] bg-white text-[#1A1A1A]/55 hover:border-[#C9A84C]/60'
+                            }`}
+                          >
+                            <span className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-sm border transition-all ${
+                              checked ? 'border-[#C9A84C] bg-[#C9A84C]' : 'border-[#D5D0C8]'
+                            }`}>
+                              {checked && (
+                                <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                  <path d="M1 3.5L3.5 6L8 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              )}
+                            </span>
+                            {def.label}
+                          </button>
+                          {checked && (
+                            <IngredientSubmenu
+                              serviceDef={def}
+                              selected={form.ingredients[def.label] ?? []}
+                              onToggle={(item) => handleIngredientToggle(def.label, item)}
+                            />
+                          )}
+                        </div>
                       )
                     })}
                   </div>
